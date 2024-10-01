@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/maeeee19/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/maeeee19/frontend-project-46/actions)",
-  "main": "index.js",
+  "main": "src/index.js",
   "devDependencies": {
     "@eslint/js": "^9.7.0",
     "commander": "^12.1.0",
@@ -25,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/maeeee19/frontend-project-46/issues"
   },
-  "homepage": "https://github.com/maeeee19/frontend-project-46#readme"
+  "homepage": "https://github.com/maeeee19/frontend-project-46#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21",
+    "path": "^0.12.7",
+    "requirejs": "^2.3.7"
+  }
 }
