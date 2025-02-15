@@ -33,6 +33,7 @@
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
     "path": "^0.12.7",
+    "require": "^0.4.4",
     "requirejs": "^2.3.7"
   }
 }
