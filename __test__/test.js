@@ -4,46 +4,32 @@ import path from 'path';
 import genDiff from '../src/index.js';
 import { test, expect } from '@jest/globals';
 
-const getFixturePath = (filename) => {
+const getFixturePath = (filename, dir) => {
  const __filename = fileURLToPath(import.meta.url);
  const dirname = path.dirname(__filename);
- return path.join(dirname, '..', '__fixtures__', filename);
+
+ return path.join(dirname, '..', !!dir ? `__fixtures__/${dir}` : '__fixtures__', filename);
 };
 
-const data = [
- {
-  name: 'gendiffJSON',
-  file1: 'file1.json',
-  file2: 'file2.json',
-  format: 'stylish',
-  txt: 'stylish.text.txt',
- },
-  {
-    name: 'gendiffYAML',
-    file1: 'file1.yaml',
-    file2: 'file2.yaml',
-    format: 'plain',
-    txt: 'plain.text.txt',
-  },
-  {
-    name: 'gendiffTwoFormats',
-    file1: 'file1.json',
-    file2: 'file2.yaml',
-    format: 'json',
-    txt: 'json.text.txt',
-  },
-  {
-    name: 'gendiffDefault',
-    file1: 'file1.json',
-    file2: 'file2.yaml',
-    txt: 'stylish.text.txt',
-  },
-];
+const file1Data = ['file1.json', 'file1.yaml', 'file1.yml']
+const file2Data = ['file2.json', 'file2.yaml', 'file2.yml']
+const formats = ['stylish', 'plain', 'json']
+const types = ['flat', 'deep']
 
-data.forEach(({ name, file1, file2, format, txt }) => {
- test(name, () => {
+const expectTest = (file1, file2, format, type) => {
   expect(
-   genDiff(getFixturePath(file1), getFixturePath(file2), format),
-  ).toEqual(fs.readFileSync(getFixturePath(txt), 'utf-8'));
- });
-});
+      genDiff(getFixturePath(file1, type), getFixturePath(file2, type), format),
+    ).toEqual(fs.readFileSync(getFixturePath(`${format}-${type}-result.txt`), 'utf-8'));
+}
+
+file1Data.forEach((file1) => {
+  file2Data.forEach((file2) => {
+    formats.forEach((format) => {
+      types.forEach((type) => {
+        test(`${type} equal ${file1} with ${file2} in ${format} format`, () => {
+          expectTest(file1, file2, format, type)
+        })
+      })
+    })
+  })
+})

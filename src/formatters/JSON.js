@@ -1,4 +1,5 @@
-const formatJson = (diffTree) => {
+const jsonFormatter = (diffTree) => {
+  console.log(diffTree)
   const convertNode = (node) => {
     if (node.type === 'nested') {
       return { ...node.children.reduce((acc, child) => ({ ...acc, [child.key]: convertNode(child) }), {}) };
@@ -14,4 +15,4 @@ const formatJson = (diffTree) => {
   return JSON.stringify(diffTree.reduce((acc, node) => ({ ...acc, [node.key]: convertNode(node) }), {}));
 };
 
-export default formatJson;
+export default jsonFormatter;

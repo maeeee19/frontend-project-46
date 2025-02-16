@@ -1,15 +1,13 @@
-import jsonFormatter from './JSON.js';
-import stylishFormatter from './styl.js';
-import plainFormatter from './plain.js';
+import formatters from './formatters/index.js'
 
 export default (diffTree, format) => {
   switch (format) {
     case 'stylish':
-      return stylishFormatter(diffTree);
+      return formatters.stylishFormatter(diffTree);
     case 'plain':
-      return plainFormatter(diffTree);
+      return formatters.plainFormatter(diffTree);
     case 'json':
-      return jsonFormatter(diffTree);
+      return formatters.jsonFormatter(diffTree);
     default:
       throw new Error(`Unknown format: ${format}`);
   }

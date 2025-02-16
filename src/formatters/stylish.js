@@ -18,6 +18,7 @@ const formatValue = (value, depth, countSpace = 4) => {
 const stylishFormatter = (diffTree, depth = 1, countSpace = 4) => {
   const indent = getIndentation(depth, countSpace);
   const sortedTree = _.sortBy(diffTree, 'key');
+  
   const result = sortedTree
     .map(({
       key, type, value, children, oldValue, newValue,
@@ -37,7 +38,9 @@ const stylishFormatter = (diffTree, depth = 1, countSpace = 4) => {
           throw new Error(`unknown type: ${type}`);
       }
     }).join('\n');
+
   const bracketIndent = getBracketIndentation(depth, ' ', countSpace);
+
   return `{\n${result}\n${bracketIndent}}`;
 };
 
