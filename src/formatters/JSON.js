@@ -1,5 +1,4 @@
 const jsonFormatter = (diffTree) => {
-  console.log(diffTree)
   const convertNode = (node) => {
     if (node.type === 'nested') {
       return { ...node.children.reduce((acc, child) => ({ ...acc, [child.key]: convertNode(child) }), {}) };
