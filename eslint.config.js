@@ -3,6 +3,9 @@ import pluginJs from "@eslint/js";
 
 
 export default [
-  {languageOptions: { globals: globals.browser }},
+  {
+    languageOptions: { globals: globals.browser },
+    ignores: ["./coverage"]
+  },
   pluginJs.configs.recommended,
 ];

@@ -8,7 +8,7 @@ const getFixturePath = (filename, dir) => {
  const __filename = fileURLToPath(import.meta.url);
  const dirname = path.dirname(__filename);
 
- return path.join(dirname, '..', !!dir ? `__fixtures__/${dir}` : '__fixtures__', filename);
+ return path.join(dirname, '..', dir ? `__fixtures__/${dir}` : '__fixtures__', filename);
 };
 
 const file1Data = ['file1.json', 'file1.yaml', 'file1.yml']
