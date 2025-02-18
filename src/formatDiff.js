@@ -1,4 +1,4 @@
-import formatters from './formatters/index.js'
+import formatters from './formatters/index.js';
 
 export default (diffTree, format) => {
   switch (format) {
