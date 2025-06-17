@@ -1,13 +1,4 @@
-import path from 'path';
 import yaml from 'js-yaml';
-import fs from 'fs';
-import process from 'process';
-
-const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
-
-const extractFileFormat = (filepath) => path.extname(filepath).slice(1);
-
-const getData = (filepath) => fs.readFileSync(getFullPath(filepath), 'utf-8');
 
 const parsers = {
   json: JSON.parse,
@@ -15,9 +6,7 @@ const parsers = {
   yml: yaml.load,
 };
 
-const parse = (filepath) => {
-  const data = getData(filepath);
-  const format = extractFileFormat(filepath);
+const parse = (data, format) => { 
   return parsers[format](data);
 };
 

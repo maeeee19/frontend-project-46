@@ -1,18 +1,36 @@
 const jsonFormatter = (diffTree) => {
-  console.log(diffTree)
-  const convertNode = (node) => {
-    if (node.type === 'nested') {
-      return { ...node.children.reduce((acc, child) => ({ ...acc, [child.key]: convertNode(child) }), {}) };
-    } 
-
-    if (node.type === 'changed') {
-      return { changing: node.type, value1: node.oldValue, value2: node.newValue };
+  const convertValue = (value) => {
+    if (typeof value === 'object' && value !== null) {
+      return JSON.parse(JSON.stringify(value));
     }
-
-    return { changing: node.type, value: node.value };
+    return value;
   };
 
-  return JSON.stringify(diffTree.reduce((acc, node) => ({ ...acc, [node.key]: convertNode(node) }), {}));
+  const convertNode = (node) => {
+    if (node.type === 'nested') {
+      return {
+        ...node.children.reduce((acc, child) => ({
+          ...acc,
+          [child.key]: convertNode(child),
+        }), {}),
+      };
+    }
+
+    if (node.type === 'changed') {
+      return {
+        changing: node.type,
+        value1: convertValue(node.oldValue),
+        value2: convertValue(node.newValue),
+      };
+    }
+
+    return { changing: node.type, value: convertValue(node.value) };
+  };
+
+  return JSON.stringify(diffTree.reduce((acc, node) => ({
+    ...acc,
+    [node.key]: convertNode(node),
+  }), {}));
 };
 
 export default jsonFormatter;
