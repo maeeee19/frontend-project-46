@@ -53,9 +53,9 @@ export default [
       'no-console': 'off',
       'import/no-extraneous-dependencies': 'off',
       'max-statements-per-line': ['error', { max: 1 }],
-      'quote-props': ['error', 'consistent'],
-      'semi': ['error', 'never'],
-      'arrow-parens': [2, 'as-needed', { 'requireForBlockBody': true }],
+      'quote-props': ['error', 'as-needed'],
+      semi: ['error', 'never'],
+      'arrow-parens': [2, 'as-needed', { requireForBlockBody: true }],
     },
   },
 ]
