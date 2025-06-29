@@ -53,7 +53,7 @@ export default [
       'no-console': 'off',
       'import/no-extraneous-dependencies': 'off',
       'max-statements-per-line': ['error', { max: 1 }],
-      semi: ['error', 'never'],
+      'semi': ['error', 'never'],
       'quote-props': ['error', 'as-needed'],
       'arrow-parens': [2, 'as-needed', { requireForBlockBody: true }],
     },
