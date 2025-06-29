@@ -33,7 +33,7 @@ const plainFormatter = (diffTree, parentPath = '') => {
           throw new Error(`Unknown node type: ${type}`)
       }
     })
-  return lines.filter((line) => line !== null).join('\n')
+  return lines.filter(line => line !== null).join('\n')
 }
 
 export default plainFormatter
