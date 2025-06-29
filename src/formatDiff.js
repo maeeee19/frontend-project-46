@@ -1,14 +1,14 @@
-import formatters from './formatters/index.js';
+import formatters from './formatters/index.js'
 
 export default (diffTree, format) => {
   switch (format) {
     case 'stylish':
-      return formatters.stylishFormatter(diffTree);
+      return formatters.stylishFormatter(diffTree)
     case 'plain':
-      return formatters.plainFormatter(diffTree);
+      return formatters.plainFormatter(diffTree)
     case 'json':
-      return formatters.jsonFormatter(diffTree);
+      return formatters.jsonFormatter(diffTree)
     default:
-      throw new Error(`Unknown format: ${format}`);
+      throw new Error(`Unknown format: ${format}`)
   }
-};
+}
