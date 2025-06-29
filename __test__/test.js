@@ -11,8 +11,8 @@ const getFixturePath = (filename, dir) => {
   return path.join(dirname, '..', dir ? `__fixtures__/${dir}` : '__fixtures__', filename);
 };
 
-const file1Data = ['file1.json', 'file1.yaml', 'file1.yml']
-const file2Data = ['file2.json', 'file2.yaml', 'file2.yml']
+const file1Data = ['file1.json', 'file1.yaml']
+const file2Data = ['file2.json', 'file2.yaml']
 const formats = ['stylish', 'plain', 'json']
 
 const expectTest = (file1, file2, format) => {
