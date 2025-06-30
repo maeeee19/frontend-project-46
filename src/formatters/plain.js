@@ -1,7 +1,7 @@
 import _ from 'lodash'
 
 const getFormattedValue = (value) => {
-  if (_.isObject(value) && value !== null) {
+  if ((_.isObject(value) || Array.isArray(value)) && value !== null) {
     return '[complex value]'
   }
   if (_.isString(value)) {

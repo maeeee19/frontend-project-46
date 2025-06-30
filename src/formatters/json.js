@@ -1,9 +1,11 @@
+import _ from 'lodash'
+
 const jsonFormatter = (diffTree) => {
   const convertValue = (value) => {
     if ((_.isObject(value) || Array.isArray(value)) && value !== null) {
       return JSON.parse(JSON.stringify(value))
     }
-    
+
     return value
   }
 
