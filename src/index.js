@@ -3,7 +3,7 @@ import path from 'path'
 import process from 'process'
 import parse from './parsers.js'
 import formatDiff from './formatDiff.js'
-import buildTree from './tree.js'
+import buildTree from './buildTree.js'
 
 const getFullPath = filepath => path.resolve(process.cwd(), filepath)
 

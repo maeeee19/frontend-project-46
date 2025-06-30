@@ -4,7 +4,7 @@ const getIndentation = (depth, countSpace = 4, replacer = ' ') => replacer.repea
 const getBracketIndentation = (depth, replacer = ' ', countSpace = 4) => replacer.repeat(depth * countSpace - countSpace)
 
 const formatValue = (value, depth, countSpace = 4) => {
-  if (!_.isObject(value) || value === null) {
+  if ((!_.isObject(value) && !Array.isArray(value)) || value === null) {
     return value
   }
   const indent = getIndentation(depth + 1, countSpace)
